@@ -6,3 +6,5 @@ A board game (more details soon)
 - Goomany M. Isfaaq (github.com/0x15F9/)
 
 - Yadhav K. Nundlall (github.com/yadhavk15)
+
+- Mungun Yoveer P. (github.com/yoveer)
