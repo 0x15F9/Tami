@@ -8,3 +8,5 @@ A board game (more details soon)
 - Yadhav K. Nundlall (github.com/yadhavk15)
 
 - Mungun Yoveer P. (github.com/yoveer)
+
+- Daniel E. Jeremie (github.com/jeremie1112)
