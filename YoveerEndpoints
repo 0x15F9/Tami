@@ -1,0 +1,75 @@
+
+	public static ArrayList[] ConcatEndPoints(ArrayList[] EndPoints, int row, int column, int k, int board[][])
+	//row and column are where to be checked
+	//k is row in arraylist, where we must insert coordinates
+	{
+		
+		try{
+			if (board[row][column] == 7){
+				EndPoints[k].add(row);
+				EndPoints[k].add(column);
+				System.out.println("2");
+			}
+			else{
+				EndPoints[k].add(0);
+				EndPoints[k].add(0);
+				System.out.println("Check");
+			}
+		}
+		catch(Exception e){
+			EndPoints[k].add(0);
+			EndPoints[k].add(0);
+		}
+
+		return EndPoints;
+	}
+
+	public static ArrayList[] CalculateEndingPoints(ArrayList<Integer> SP, int[] dice, int board[][])
+	{
+		dice[0]-=1;
+		dice[1]-=1;
+		int row=0, column=0, temp=0;
+		int n = ((SP.size()+1)/2);//n is the number of fucking starting points
+		System.out.println(n);
+
+		ArrayList <Integer>[] EndPoints = new ArrayList[n]; 
+		
+		for (int i = 0; i < n; i++) { //Initialise an arraylist for each index inside the fucking array
+    	EndPoints[i] = new ArrayList<Integer>();
+		} 
+		
+		for (int i=0; i<SP.size(); i=i+2){//Each starting point
+
+			int k;
+			k=i/2;
+			for(int j=0; j<2; j++){
+				try{
+					row = dice[0] + SP.get(i);
+					column = dice[1] + SP.get(i+1);
+					ConcatEndPoints(EndPoints, row, column, k, board);
+
+					row = SP.get(i) - dice[0];
+					column = SP.get(i+1) - dice[1];
+					ConcatEndPoints(EndPoints, row, column, k, board);
+
+					// row = SP.get(i) + dice[0];
+					// column = SP.get(i+1) - dice[1];
+					// ConcatEndPoints(EndPoints, row, column, k, board);
+
+					row = SP.get(i) - dice[0];
+					column = SP.get(i+1) + dice[1];
+					ConcatEndPoints(EndPoints, row, column, k, board);
+				}
+				catch(Exception e){
+					ConcatEndPoints(EndPoints, 0, 0, k, board);
+				}
+
+				//swapping dice values
+				temp=dice[0];
+				dice[0]=dice[1];
+				dice[1]=temp;
+			}
+		}
+		
+		return EndPoints;
+	}
