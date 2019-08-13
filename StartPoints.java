@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 class Main {
 
 	public static ArrayList GenerateStartingPoints(int [][] board, int dice[], int turn, int player)
